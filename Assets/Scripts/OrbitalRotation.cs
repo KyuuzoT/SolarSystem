@@ -6,11 +6,11 @@ public class OrbitalRotation : MonoBehaviour
 {
     [SerializeField]
     private GameObject pivotOrbitalRotationPoint;
+    [SerializeField]
+    private GameObject GUISlider;
 
     [SerializeField]
     private float rotationSpeed = 0.0f;
-
-    [SerializeField]
     private float multiplier = 1.0f;
 
     private Vector3 offset;
@@ -20,15 +20,14 @@ public class OrbitalRotation : MonoBehaviour
     void Start()
     {
         offset = pivotOrbitalRotationPoint.transform.position - transform.position;
-        //rotationSpeed /= 365;
     }
 
     // Update is called once per frame
     void Update()
     {
+        multiplier = GUISlider.GetComponent<SpeedUpRotation>().RotationSpeedMultiplier;
         rotationY += (1.0f / rotationSpeed)*multiplier;
         Quaternion rotation = Quaternion.Euler(0, rotationY, 0);
-        //var angle = pivotOrbitalRotationPoint.transform.position
         transform.position = pivotOrbitalRotationPoint.transform.position - ((rotation) * offset);
     }
 }
