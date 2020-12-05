@@ -107,7 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6df32c439388fa4687761e039b9ae5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 75
+  RotationSpeed: 0.995
+  SpeedMultiplier: 1
 --- !u!114 &8585276129558083320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotOrbitalRotationPoint: {fileID: 0}
-  rotationSpeed: 0
+  rotationSpeed: 4380
+  multiplier: 1

@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlanetRotation : MonoBehaviour
 {
     [SerializeField]
-    private float RotationSpeed = 0.0f;
+    private float RotationSpeed = 1.0f;
+
+    [SerializeField][Range(0,100)]
+    private float SpeedMultiplier = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +19,7 @@ public class PlanetRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var angle = RotationSpeed * Time.deltaTime;
+        float angle = ((float)(1.0 / RotationSpeed) * Time.deltaTime)*SpeedMultiplier;
         transform.Rotate(Vector3.up, angle);
     }
 }
