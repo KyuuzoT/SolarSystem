@@ -7,8 +7,8 @@ public class SpeedUpRotation : MonoBehaviour
     [SerializeField][Range(1,1000)]
     private float rotationSpeedMultiplier = 1.0f;
 
-    public Rect Label /*= new Rect(5, 29, 250, 20)*/;
-    public Rect Slider /*= new Rect(225, 35, 240, 20)*/;
+    public Rect Label;
+    public Rect Slider;
 
     private void Awake()
     {
@@ -23,6 +23,8 @@ public class SpeedUpRotation : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(Label, "Change speed: ");
+        GUIStyle style = new GUIStyle();
+        GUI.color = Color.white;
         rotationSpeedMultiplier = GUI.HorizontalSlider(Slider, rotationSpeedMultiplier, 1, 1000);
     }
 }

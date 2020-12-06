@@ -34,28 +34,31 @@ public class FreeCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotationX += Input.GetAxis("Mouse X") * sensivity;
-        rotationX = ClampAngle(rotationX, minX, maxX);
-        var QuaternionX = Quaternion.AngleAxis(rotationX, Vector3.up);
+        if (Input.GetMouseButton(1))
+        {
+            rotationX += Input.GetAxis("Mouse X") * sensivity;
+            rotationX = ClampAngle(rotationX, minX, maxX);
+            var QuaternionX = Quaternion.AngleAxis(rotationX, Vector3.up);
 
-        rotationY += Input.GetAxis("Mouse Y") * sensivity;
-        rotationY = ClampAngle(rotationY, minY, maxY);
-        var QuaternionY = Quaternion.AngleAxis(rotationY, Vector3.left);
+            rotationY += Input.GetAxis("Mouse Y") * sensivity;
+            rotationY = ClampAngle(rotationY, minY, maxY);
+            var QuaternionY = Quaternion.AngleAxis(rotationY, Vector3.left);
 
-        transform.rotation = originalRotation * QuaternionX * QuaternionY;
+            transform.rotation = originalRotation * QuaternionX * QuaternionY;
 
-        transfer = transform.forward * Input.GetAxis("Vertical");
-        transfer += transform.right * Input.GetAxis("Horizontal");
-        transform.position += transfer * flySpeed * Time.deltaTime;
+            transfer = transform.forward * Input.GetAxis("Vertical");
+            transfer += transform.right * Input.GetAxis("Horizontal");
+            transform.position += transfer * flySpeed * Time.deltaTime;
+        }
     }
 
     private float ClampAngle(float angle, float min, float max)
     {
-        if(angle < min)
+        if (angle < min)
         {
             angle -= min;
         }
-        else if(angle > max)
+        else if (angle > max)
         {
             angle -= max;
         }
