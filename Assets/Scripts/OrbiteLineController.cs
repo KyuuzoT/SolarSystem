@@ -1,31 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class OrbiteLineController : MonoBehaviour
+namespace UnityBase.SolarSystem
 {
-    private LineRenderer line;
-    private Transform[] points;
-    [SerializeField][Range(0.01f, 1.0f)]
-    private float lineMultiplier = 0.1f;
-
-    private void Awake()
+    public class OrbiteLineController : MonoBehaviour
     {
-        line = gameObject.AddComponent<LineRenderer>();
-        line.widthMultiplier = lineMultiplier;
-    }
+        private LineRenderer line;
+        private Transform[] points;
+        [SerializeField]
+        [Range(0.01f, 1.0f)]
+        private float lineMultiplier = 0.1f;
 
-    internal void SetUpLine(Transform[] points)
-    {
-        line.positionCount = points.Length;
-        this.points = points;
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < points.Length; i++)
+        private void Awake()
         {
-            line.SetPosition(i, points[i].position);
+            line = gameObject.AddComponent<LineRenderer>();
+            line.widthMultiplier = lineMultiplier;
+        }
+
+        internal void SetUpLine(Transform[] points)
+        {
+            line.positionCount = points.Length;
+            this.points = points;
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < points.Length; i++)
+            {
+                line.SetPosition(i, points[i].position);
+            }
         }
     }
 }

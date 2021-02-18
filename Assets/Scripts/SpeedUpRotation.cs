@@ -1,48 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SpeedUpRotation : MonoBehaviour
+namespace UnityBase.SolarSystem
 {
-    [SerializeField][Range(1,1000)]
-    private float rotationSpeedMultiplier = 1.0f;
-
-    private Rect label = new Rect();
-    private Rect slider;
-
-    public Rect Label
+    public class SpeedUpRotation : MonoBehaviour
     {
-        get => label;
-        set
+        [SerializeField]
+        [Range(1, 1000)]
+        private float rotationSpeedMultiplier = 1.0f;
+
+        private Rect label = new Rect();
+        private Rect slider;
+
+        public Rect Label
         {
-            label= value;
+            get => label;
+            set
+            {
+                label = value;
+            }
         }
-    }
 
-    public Rect Slider
-    {
-        get => slider;
-        set 
+        public Rect Slider
         {
-            slider = value;
+            get => slider;
+            set
+            {
+                slider = value;
+            }
         }
-    }
-    internal float RotationSpeedMultiplier
-    {
-        get => rotationSpeedMultiplier;
-    }
+        internal float RotationSpeedMultiplier
+        {
+            get => rotationSpeedMultiplier;
+        }
 
-    private void Awake()
-    {
-        Label = new Rect(Screen.width*0.6f / 2, Screen.height * 0.9f, 250, 20);
-        Slider = new Rect(Screen.width*0.9f / 2, Screen.height * 0.915f, 250, 20);
-    }
+        private void Awake()
+        {
+            Label = new Rect(Screen.width * 0.6f / 2, Screen.height * 0.9f, 250, 20);
+            Slider = new Rect(Screen.width * 0.9f / 2, Screen.height * 0.915f, 250, 20);
+        }
 
-    private void OnGUI()
-    {
-        GUI.Label(Label, "Change speed: ");
-        GUIStyle style = new GUIStyle();
-        GUI.color = Color.white;
-        rotationSpeedMultiplier = GUI.HorizontalSlider(Slider, rotationSpeedMultiplier, 1, 1000);
+        private void OnGUI()
+        {
+            GUI.Label(Label, "Change speed: ");
+            GUIStyle style = new GUIStyle();
+            GUI.color = Color.white;
+            rotationSpeedMultiplier = GUI.HorizontalSlider(Slider, rotationSpeedMultiplier, 1, 1000);
+        }
     }
 }
